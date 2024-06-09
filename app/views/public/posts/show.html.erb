@@ -1,0 +1,38 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>User info</h2>
+      <%= render 'public/customers/info', customer: @post.customer %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>Post detail</h2>
+  		<table class='table'>
+  		  <tr>
+          <td>
+            <%= link_to mypage_path(@post.customer_id) do %>
+                <%= image_tag @post.customer.get_profile_image, size:"50x50" %><br>
+                <%= @post.customer.name %>
+            <% end %>
+          </td>
+          <td>
+            <% if @post.image.attached? %>
+              <%= image_tag @post.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= link_to @post.title, post_path(@post.id) %></td>
+          <td><%= @post.body %></td>
+          <td><%= render "public/favorites/btn", post: @post %></td>
+          <td>コメント数: <%= @post.post_comments.count %></td>
+          <% if @post.customer == current_customer %>
+            <td><%= link_to 'Edit', edit_post_path(@post.id), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <% end %>
+        </tr>
+      </table>
+      <%= render "public/post_comments/index", post: @post %>
+      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+    </div>
+  </div>
+</div>

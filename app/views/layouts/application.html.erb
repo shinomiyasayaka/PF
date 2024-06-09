@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PF</title>
+    <title>シェアファッション</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,6 +12,52 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="<%= (admin_signed_in? ? "admin_header" : "" ) %>">
+      <nav class="navbar navbar-expand-lg", style="background-color: #f5da81; color: black;">
+        <div class="container">
+          <%= link_to 'ShareFashion', (admin_signed_in? ? admin_top_path : root_path ), class: "logo" %>
+
+              <div class="ml-auto">
+
+                <div class="links">
+                  <ul class="navbar-nav">
+                    <% if admin_signed_in? %>
+                      <li class="nav-item"><%= link_to '投稿一覧',  admin_posts_path %></li>
+                      <li class="nav-item"><%= link_to '会員一覧',  admin_customers_path %></li>
+                      <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+                    <% elsif customer_signed_in? %>
+                      <li class="nav-item"><%= link_to 'マイページ', mypage_path %></li>
+                      <li class="nav-item"><%= link_to '投稿一覧', posts_path %></li>
+                      <li class="nav-item"><%= link_to '会員一覧', list_path %></li>
+                      <li class="nav-item"><%= link_to 'お気に入り投稿一覧', favorite_path %></li>
+                      <li class="nav-item"><%= link_to '新規投稿', new_post_path %></li>
+                      <li class="nav-item"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+                    <% else %>
+                      <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path %></li>
+                      <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path %></li>
+                    <% end %>
+                  </ul>
+                </div>
+
+                <div class="search-box float-right">
+                  <%= render 'public/search/form' %>
+                </div>
+
+              </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer style="padding-top: 70px; background-color: #f7d358;">
+      <div class='container mt-5'>
+      	<div class='row'>
+        	<div class='mx-auto'></div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
