@@ -1,29 +1,42 @@
 <table class='table'>
   <tr><%= image_tag customer.get_profile_image, size:'100x100' %></tr>
   <tr>
-	  <th>name</th>
+	  <th><i class="fa-regular fa-user"></i>name</th>
 	  <th><%= customer.name %></th>
   </tr>
   <tr>
-    <th>follows</th>
-    <th><%= link_to customer.followings.count, followings_customer_path(customer) %></th>
+    <th>フォロー数</th>
+    <th><%= link_to customer.followings.count, customer_followings_path(customer) %></th>
   </tr>
   <tr>
-    <th>followers</th>
-    <th><%= link_to customer.followers.count, followers_customer_path(customer) %></th>
+    <th>フォロワー数</th>
+    <th><%= link_to customer.followers.count, customer_followers_path(customer) %></th>
   </tr>
 </table>
 
 <div class='row'>
-  <% if current_customer != customer %>
-    <td><%= render "public/relationships/btn", customer: customer %></td>
-  <% else %>
-    <%= link_to edit_information_path(customer), class: "btn btn-outline-secondary btn-block" do %>
-      <i class="fas fa-user-cog"></i>
-    <% end %>
-  <% end %>
+  <table class="table table-borderless">
+    <tr>
+      <td>
+        <% if current_customer != customer %>
+          <%= render "public/relationships/btn", customer: customer %>
+        <% else %>
+          <%= link_to edit_information_path(customer), class: "btn btn-outline-info btn-block" do %>
+            <i class="fa-solid fa-user-pen"></i>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% if current_customer != customer && current_customer.following?(customer) && customer.following?(current_customer) %>
+          <%= link_to 'chatを始める', chat_path(customer.id), class: "btn btn-outline-success" %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
 
-  <% if current_customer != customer && current_customer.following?(customer) && customer.following?(current_customer) %>
-    <%= link_to 'chatを始める', chat_path(customer.id), class: "ml-3" %>
+  <% unless customer.guest_customer? %>
+    <div class="row">
+      <%= link_to "",edit_information_path(customer) %>
+    </div>
   <% end %>
 </div>

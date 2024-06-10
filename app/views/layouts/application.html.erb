@@ -22,25 +22,69 @@
                 <div class="links">
                   <ul class="navbar-nav">
                     <% if admin_signed_in? %>
-                      <li class="nav-item"><%= link_to '投稿一覧',  admin_posts_path %></li>
-                      <li class="nav-item"><%= link_to '会員一覧',  admin_customers_path %></li>
-                      <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+                      <li>
+                        <%= link_to admin_posts_path,class: 'nav-link text-dark' do %>
+                          <i class="fa-solid fa-file-image"></i>投稿一覧
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to admin_customers_path,class: 'nav-link text-dark' do %>
+                          <i class="fa-solid fa-user"></i>会員一覧
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
+                          <i class="fa-solid fa-right-from-bracket"></i>ログアウト
+                        <% end %>
+                      </li>
                     <% elsif customer_signed_in? %>
-                      <li class="nav-item"><%= link_to 'マイページ', mypage_path %></li>
-                      <li class="nav-item"><%= link_to '投稿一覧', posts_path %></li>
-                      <li class="nav-item"><%= link_to '会員一覧', list_path %></li>
-                      <li class="nav-item"><%= link_to 'お気に入り投稿一覧', favorite_path %></li>
-                      <li class="nav-item"><%= link_to '新規投稿', new_post_path %></li>
-                      <li class="nav-item"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+                      <li>
+                        <%= link_to mypage_path(current_customer.id),class: 'nav-link text-dark' do %>
+                          <i class="fa-solid fa-house"></i>マイページ
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to posts_path,class: 'nav-link text-dark' do %>
+                          <i class="fa-regular fa-file-image"></i>投稿一覧
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to list_path,class: 'nav-link text-dark' do %>
+                          <i class="fa-regular fa-user"></i>会員一覧
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to customer_favorites_path(current_customer),class: 'nav-link text-dark' do %>
+                          <i class="fa-regular fa-heart"></i>お気に入り投稿一覧
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to new_post_path,class: 'nav-link text-dark' do %>
+                          <i class="fa-solid fa-file-pen"></i>新規投稿
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-dark' do %>
+                          <i class="fa-solid fa-right-from-bracket"></i>ログアウト
+                        <% end %>
+                      </li>
                     <% else %>
-                      <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path %></li>
-                      <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path %></li>
+                      <li>
+                        <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
+                          <i class="fa-solid fa-hands"></i>新規登録
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to new_customer_session_path,class: 'nav-link text-dark' do %>
+                          <i class="fa-solid fa-right-to-bracket"></i>ログイン
+                        <% end %>
+                      </li>
                     <% end %>
                   </ul>
                 </div>
 
                 <div class="search-box float-right">
-                  <%= render 'public/search/form' %>
+                  <%= render 'public/searches/form' %>
                 </div>
 
               </div>
@@ -49,6 +93,7 @@
     </header>
 
     <main>
+      <%= flash[:notice] %>
       <%= yield %>
     </main>
 

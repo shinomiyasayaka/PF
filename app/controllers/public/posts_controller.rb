@@ -22,8 +22,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "You have created book successfully."
     else
-      @posts = Post.all
-      render 'index'
+      render 'new'
     end
   end
 

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <h2><strong>ShareFashion</strong> <i class="fa-regular fa-comment"></i> へようこそ！</h2>
+      <p>ここでは自分らしいファッションを投稿し、共有することができます。</p>
+      <p>自信を持ってファッションを楽しもう！</p>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to "ゲストログイン（閲覧用）", public_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        </div>
+        <div class="row">
+          <%= link_to 'ログイン',new_customer_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to '新規登録',new_customer_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

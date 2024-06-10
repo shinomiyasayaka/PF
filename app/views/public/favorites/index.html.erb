@@ -1,0 +1,39 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-10'>
+      <h3 class="my-5">お気に入り投稿一覧</h3>
+      <table class='table table-hover table-inverse'>
+        <thead class="thead-light">
+          <tr>
+            <th></th>
+            <th>画像</th>
+            <th>ファッション名</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @favorite_posts.each do |post| %>
+            <tr>
+              <td><%= link_to mypage_path(post.customer_id) do %>
+                <%= image_tag post.customer.get_profile_image, size:'50x50' %>
+                <% end %>
+              </td>
+              <td>
+                <% if post.image.attached? %>
+                  <%= image_tag post.image, size: "100x100" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %>
+                <% end %>
+              </td>
+              <td><%= link_to post.title, post_path(post.id) %></td>
+              <td><%= render "public/favorites/btn", post: post %></td>
+              <td>コメント数: <%= post.post_comments.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

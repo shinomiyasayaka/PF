@@ -7,6 +7,7 @@ class Customer < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post
 
   has_many :customer_rooms
   has_many :chats
@@ -60,6 +61,19 @@ class Customer < ApplicationRecord
 
   def active_for_authentication?
     super && (is_active == true)
+  end
+
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "guestuser"
+    end
+  end
+
+  def guest_customer?
+    email == GUEST_USER_EMAIL
   end
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
