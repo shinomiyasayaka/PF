@@ -7,5 +7,5 @@
         これまでの投稿履歴が閲覧できなくなります。</br>
         退会する場合は、「退会する」をクリックしてください。
       </p>
-      <%= link_to "退会しない", mypage_path, class: "btn btn-primary" %>
+      <%= link_to "退会しない", mypage_path(current_customer.id), class: "btn btn-primary" %>
       <%= link_to "退会する", withdraw_customer_path, method: :patch, class: "btn btn-danger ml-2", data: { confirm: "本当に退会しますか？" } %>
