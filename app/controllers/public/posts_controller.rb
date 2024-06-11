@@ -13,14 +13,13 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @customer = current_customer
   end
 
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      redirect_to post_path(@post), notice: "You have created book successfully."
+      redirect_to post_path(@post), notice: "投稿を保存しました。"
     else
       render 'new'
     end
@@ -31,7 +30,7 @@ class Public::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: "You have updated book successfully."
+      redirect_to post_path(@post), notice: "投稿内容を更新しました。"
     else
       render "edit"
     end

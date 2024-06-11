@@ -14,13 +14,7 @@
           <%= image_tag post.customer.get_profile_image, size:'50x50' %>
           <% end %>
         </td>
-        <td>
-          <% if post.image.attached? %>
-            <%= image_tag post.image, size: "100x100" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "100x100" %>
-          <% end %>
-        </td>
+        <td><%= image_tag post.image, size: "100x100" %></td>
         <td><%= link_to post.title, post_path(post.id) %></td>
         <td><%= render "public/favorites/btn", post: post %></td>
         <td>コメント数: <%= post.post_comments.count %></td>

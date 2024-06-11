@@ -10,13 +10,7 @@
                 <%= @post.customer.name %>
             <% end %>
           </td>
-          <td>
-            <% if @post.image.attached? %>
-              <%= image_tag @post.image, size: "300x300" %>
-            <% else %>
-              <%= image_tag 'no_image', size: "300x300" %>
-            <% end %>
-          </td>
+          <td><%= image_tag @post.image, size: "300x300" %></td>
         </tr>
       </table>
 

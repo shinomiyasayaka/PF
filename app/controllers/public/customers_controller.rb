@@ -19,7 +19,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to mypage_path(@customer), notice: "You have updated user successfully."
+      redirect_to mypage_path(@customer), notice: "会員情報を更新しました。"
     else
       render "edit"
     end
@@ -34,7 +34,7 @@ class Public::CustomersController < ApplicationController
     # is_activeカラムをfalseに変更する
     reset_session
     # 退会した時点でログアウトする
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:notice] = "退会処理を実行いたしました。"
     redirect_to root_path
   end
 
