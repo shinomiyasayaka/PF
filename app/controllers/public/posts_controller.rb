@@ -38,7 +38,7 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to mypage_path(current_customer)
+    redirect_to posts_path
   end
 
   private
