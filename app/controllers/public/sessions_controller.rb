@@ -47,7 +47,7 @@ class Public::SessionsController < Devise::SessionsController
     return unless customer.valid_password?(params[:customer][:password])
     if customer.is_active == true
     else
-      redirect_to new_customer_session_path, notice: "退会済みです."
+      redirect_to new_customer_session_path, notice: "退会済みです。"
     end
   end
 
