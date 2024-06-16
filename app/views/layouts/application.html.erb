@@ -16,7 +16,7 @@
     <header class="<%= (admin_signed_in? ? "admin_header" : "" ) %>">
       <nav class="navbar navbar-expand-lg", style="background-color: #f5da81; color: black;">
         <div class="container">
-          <%= link_to 'ShareFashion', (admin_signed_in? ? admin_top_path : root_path ), class: "logo" %>
+          <%= link_to 'ShareFashion', (admin_signed_in? ? new_admin_session_path : root_path ), class: "logo" %>
 
               <div class="ml-auto">
 
