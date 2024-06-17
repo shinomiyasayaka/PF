@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row d-flex justify-content-center mt-4">
+    <h4 id="room" data-room="<%= @room.id %>" data-customer="<%= current_customer.id %>"><%= @customer.name %> さんとのチャット</h4>
+  </div>
+
+  <div class="row d-flex justify-content-center mt-4">
+    <div class="message" style="width: 400px;">
+      <%= (render 'public/chats/message', chats: @chats) %>
+    </div>
+  </div>
+
+  <div class="errors">
+    <%= render "public/shared/error_messages", resource: @chat %>
+  </div>
+
+  <div class="row mx-auto d-flex justify-content-center mb-4">
+    <%= form_with model: @chat, data: {remote: true} do |f| %>
+      <%= f.text_field :message, :size=>"50", autocomplete: "message", placeholder: "メッセージをここに"%>
+      <%= f.hidden_field :room_id %>
+      <%= f.submit "送信", class: "btn btn-dark" %>
+    <% end %>
+  </div>
+</div>
