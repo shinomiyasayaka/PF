@@ -1,3 +1,8 @@
+Admin.create!(
+  email: "admin@a",
+  password: "978653"
+)
+
 puts "seedの実行を開始"
 
 olivia = Customer.find_or_create_by!(email: "olivia@example.com") do |customer|

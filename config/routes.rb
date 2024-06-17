@@ -46,8 +46,9 @@ Rails.application.routes.draw do
 
   # 管理者側ルーティング
   namespace :admin do
-    get 'top' => 'homes#top', as: 'top'
-    resources :posts, only: [:index, :show, :edit, :update, :destroy]
+    resources :posts, only: [:index, :show, :edit, :update, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
     resources :customers, only: [:index, :show, :edit, :update]
   end
 
