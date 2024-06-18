@@ -20,4 +20,7 @@
       <%= f.submit "送信", class: "btn btn-dark" %>
     <% end %>
   </div>
+  <div class="row justify-content-end mb-4">
+    <%= link_to 'マイページへ戻る', mypage_path(current_customer.id), class: "btn btn-secondary ml-5" %>
+  </div>
 </div>
