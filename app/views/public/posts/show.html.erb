@@ -26,6 +26,7 @@
         <tr>
           <td><%= render "public/favorites/btn", post: @post %></td>
           <td>コメント数: <%= @post.post_comments.count %></td>
+          <td class="view-count">閲覧数: <%= @post.view_counts.count %></td>
           <% if @post.customer == current_customer %>
             <td><%= link_to '編集', edit_post_path(@post.id), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>

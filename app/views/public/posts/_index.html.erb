@@ -18,6 +18,7 @@
         <td><%= link_to post.title, post_path(post.id) %></td>
         <td><%= render "public/favorites/btn", post: post %></td>
         <td>コメント数: <%= post.post_comments.count %></td>
+        <td class="view-count">閲覧数: <%= post.view_counts.count %></td>
       </tr>
     <% end %>
   </tbody>
