@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     end
 
     post 'chats' => 'chats#create'
-    get 'chats/room' => 'chats#show', as: 'chat'
+    get 'chats/room/:id' => 'chats#show', as: 'chat'
     get 'search', to: 'searches#search'
     resources :notifications, only: [:update]
   end
