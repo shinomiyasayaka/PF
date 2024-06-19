@@ -1,0 +1,34 @@
+<table class="table table-borderless">
+  <tr>
+    <th>会員ID</td>
+    <td><%= customer.id %></td>
+  </tr>
+
+  <tr>
+    <th>アイコン</th>
+    <td><%= image_tag customer.get_profile_image, size:'100x100' %></td>
+  </tr>
+
+  <tr>
+    <th>氏名</td>
+    <td><%= customer.name %></td>
+  </tr>
+
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= customer.email %></td>
+  </tr>
+
+  <tr>
+    <th>会員ステータス</th>
+    <td><%= customer.customer_status %></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>
+      <%= link_to "編集する", edit_admin_customer_path(customer), class:"btn btn-success" %>
+      <%= link_to '会員一覧へ戻る', admin_customers_path, class: "btn btn-secondary ml-5" %>
+    </td>
+  </tr>
+</table>
