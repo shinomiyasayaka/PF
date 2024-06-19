@@ -24,8 +24,12 @@
           <td><%= @post.body %></td>
         </tr>
         <tr>
-          <td><%= render "public/favorites/btn", post: @post %></td>
-          <td>コメント数: <%= @post.post_comments.count %></td>
+          <td class="favorite-btn_<%= @post.id %>">
+            <%= render "public/favorites/favorite_btn", post: @post %>
+          </td>
+          <td class="post-comments-counter">
+            <%= render "public/post_comments/counter", post: @post %>
+          </td>
           <td class="view-count">閲覧数: <%= @post.view_counts.count %></td>
           <% if @post.customer == current_customer %>
             <td><%= link_to '編集', edit_post_path(@post.id), class: "btn btn-sm btn-success" %></td>
@@ -36,8 +40,12 @@
     </div>
 
     <div class='col-4'>
-      <%= render "public/post_comments/index", post: @post %>
-      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+      <div class="post-comments-index">
+        <%= render "public/post_comments/index", post_comments: @post_comments %>
+      </div>
+      <div class="post-comments-form">
+        <%= render "public/post_comments/form", post: @post %>
+      </div>
     </div>
   </div>
 </div>

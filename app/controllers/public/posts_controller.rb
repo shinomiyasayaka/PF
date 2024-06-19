@@ -12,6 +12,7 @@ class Public::PostsController < ApplicationController
       current_customer.view_counts.create(post_id: @post.id)
     end
     @post_comment = PostComment.new
+    @post_comments = @post.post_comments
   end
 
   def index

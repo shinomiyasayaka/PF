@@ -16,8 +16,12 @@
         </td>
         <td><%= image_tag post.image, size: "100x100" %></td>
         <td><%= link_to post.title, post_path(post.id) %></td>
-        <td><%= render "public/favorites/btn", post: post %></td>
-        <td>コメント数: <%= post.post_comments.count %></td>
+        <td class="favorite-btn_<%= post.id %>">
+            <%= render "public/favorites/favorite_btn", post: post %>
+        </td>
+        <td class="post-comments-counter">
+            <%= render "public/post_comments/counter", post: post %>
+        </td>
         <td class="view-count">閲覧数: <%= post.view_counts.count %></td>
       </tr>
     <% end %>

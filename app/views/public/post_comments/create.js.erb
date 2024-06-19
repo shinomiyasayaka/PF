@@ -1,0 +1,4 @@
+$('.comment-textarea').val("")
+$('.post-comments-counter').html("<%= j(render 'public/post_comments/counter', post: @post) %>")
+$('.post-comments-index').html("<%= j(render 'public/post_comments/index', post_comments: @post_comments) %>")
+$('.post-comments-form').html("<%= j(render 'public/post_comments/form', post: @post) %>")
