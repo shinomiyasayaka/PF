@@ -27,7 +27,7 @@
             <td>コメント数: <%= @post.post_comments.count %></td>
             <td>
               <%= link_to '編集', edit_admin_post_path(@post.id), class: "btn btn-sm btn-success" %>
-              <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+              <%= link_to '削除', admin_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
             </td>
           </tr>
         </table>
