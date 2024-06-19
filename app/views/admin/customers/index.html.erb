@@ -2,28 +2,7 @@
   <div class="row">
     <div class="col">
       <h4 class="my-5">会員一覧</h4>
-        <table class="table">
-            <thead class="table-secondary">
-              <tr>
-                <th>会員ID</th>
-                <th>アイコン</th>
-                <th>氏名</th>
-                <th>メールアドレス</th>
-                <th>ステータス</th>
-              </tr>
-            </thead>
-          <% @customers.each do |customer| %>
-            <tbody>
-              <tr>
-                <td><%= customer.id %></td>
-                <td><%= image_tag customer.get_profile_image, size: '50x50' %></td>
-                <td><%= link_to customer.name, admin_customer_path(customer) %></td>
-                <td><%= customer.email %></td>
-                <td><%= customer.customer_status %></td>
-              </tr>
-            </tbody>
-          <% end %>
-        </table>
+        <%= render 'index', customers: @customers%>
     </div>
   </div>
 </div>
