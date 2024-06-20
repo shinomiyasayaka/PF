@@ -20,8 +20,7 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.customer_id = current_customer.id
+    @post = current_customer.posts.new(post_params)
     if @post.save
       redirect_to post_path(@post), notice: "投稿を保存しました。"
     else

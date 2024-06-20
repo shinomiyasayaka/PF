@@ -1,0 +1,95 @@
+<header class="<%= (admin_signed_in? ? "admin_header" : "" ) %>">
+  <nav class="navbar navbar-expand-lg", style="background-color: #f5da81; color: black;">
+    <div class="container">
+      <%= link_to 'ShareFashion', (admin_signed_in? ? new_admin_session_path : root_path ), class: "logo" %>
+
+          <div class="ml-auto">
+
+            <div class="links">
+              <ul class="navbar-nav">
+                <% if admin_signed_in? %>
+                  <li>
+                    <%= link_to admin_posts_path,class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-file-image"></i>投稿一覧
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to admin_customers_path,class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-user"></i>会員一覧
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-right-from-bracket"></i>ログアウト
+                    <% end %>
+                  </li>
+                <% elsif customer_signed_in? %>
+                  <li>
+                    <%= link_to mypage_path(current_customer.id),class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-house"></i>マイページ
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to posts_path,class: 'nav-link text-dark' do %>
+                      <i class="fa-regular fa-file-image"></i>投稿一覧
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to list_path,class: 'nav-link text-dark' do %>
+                      <i class="fa-regular fa-user"></i>会員一覧
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to customer_favorites_path(current_customer),class: 'nav-link text-dark' do %>
+                      <i class="fa-regular fa-heart"></i>お気に入り投稿一覧
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_post_path,class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-file-pen"></i>新規投稿
+                    <% end %>
+                  </li>
+                  <li class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      通知
+                      <span class="badge badge-danger"><%= current_customer.notifications.where(read: false).count %></span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <% if current_customer.notifications.where(read: false).any? %>
+                        <small class="dropdown-item disabled">直近5件の未読の通知を表示しています</small>
+                        <% current_customer.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
+                          <%= link_to notification_message(notification), notification_path(notification), method: :patch, class: "dropdown-item" %>
+                        <% end %>
+                      <% else %>
+                        <span class="dropdown-item disabled">未読の通知はありません</span>
+                      <% end %>
+                    </div>
+                  </li>
+                  <li>
+                    <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-right-from-bracket"></i>ログアウト
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-hands"></i>新規登録
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_customer_session_path,class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-right-to-bracket"></i>ログイン
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+
+            <div class="search-box float-right">
+              <%= render 'public/searches/form' %>
+            </div>
+
+          </div>
+    </div>
+  </nav>
+</header>
