@@ -11,7 +11,9 @@
         <tr>
           <td><%= image_tag customer.get_profile_image, size: '50x50' %></td>
           <td><%= customer.name %></td>
-          <td><%= render "public/relationships/btn", customer: customer %></td>
+          <td class="relationship_<%= customer.id %>">
+            <%= render "public/relationships/btn", customer: customer %>
+          </td>
           <td><%= link_to '詳細', mypage_path(customer), class: "btn btn-secondary" %></td>
         </tr>
       <% end %>
