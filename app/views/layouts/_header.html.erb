@@ -72,6 +72,11 @@
                   </li>
                 <% else %>
                   <li>
+                    <%= link_to new_admin_session_path,class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-user-tie"></i>管理者ログイン
+                    <% end %>
+                  </li>
+                  <li>
                     <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
                       <i class="fa-solid fa-hands"></i>新規登録
                     <% end %>
