@@ -48,4 +48,11 @@
       </div>
     </div>
   </div>
+  <div class="row justify-content-end mb-4">
+    <% if @post.customer == current_customer %>
+      <%= link_to 'マイページへ', mypage_path(current_customer.id), class: "btn btn-secondary" %>
+    <% else %>
+      <%= link_to '投稿一覧へ', posts_path, class: "btn btn-secondary" %>
+    <% end %>
+  </div>
 </div>

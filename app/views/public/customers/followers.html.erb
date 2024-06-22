@@ -7,6 +7,9 @@
       <% else %>
         <p>ユーザーはいません</p>
       <% end %>
+      <div class="row justify-content-end mb-4">
+        <%= link_to 'マイページへ', mypage_path(current_customer.id), class: "btn btn-secondary ml-5" %>
+      </div>
     </div>
   </div>
 </div>
