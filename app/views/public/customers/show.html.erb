@@ -9,4 +9,9 @@
       <%= render 'public/posts/index',posts: @posts %>
     </div>
   </div>
+  <div class="row justify-content-end mb-4">
+    <% if current_customer != @customer %>
+      <%= link_to '会員一覧へ', list_path, class: "btn btn-secondary" %>
+    <% end %>
+  </div>
 </div>
