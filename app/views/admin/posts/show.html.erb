@@ -1,43 +1,43 @@
 <div class='container'>
-  <h3>投稿詳細</h3>
-    <div class='row'>
-      <div class='col-8'>
-        <table class="table table-borderless">
-          <tr>
-            <td>
-              <%= link_to admin_customer_path(@post.customer_id) do %>
-                  <%= image_tag @post.customer.get_profile_image, size:"50x50" %><br>
-                  <%= @post.customer.name %>
-              <% end %>
-            </td>
-            <td><%= image_tag @post.image, size: "300x300" %></td>
-          </tr>
-        </table>
+  <div class='row-8'>
+    <h3 class=" text-center mt-4">投稿詳細</h3>
+      <table class="table table-borderless d-flex justify-content-center">
+        <tr>
+          <td>
+            <%= link_to admin_customer_path(@post.customer_id), class: 'text-dark' do %>
+                <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"50x50" %><br>
+                <%= @post.customer.name %>
+            <% end %>
+          </td>
+          <td><%= image_tag @post.image, size: "300x300" %></td>
+        </tr>
+      </table>
 
-        <table class="table table-borderless">
-          <tr>
-            <td>ファッション名</td>
-            <td><%= link_to @post.title, admin_post_path(@post.id) %></td>
-          </tr>
-          <tr>
-            <td>コーディネート内容</td>
-            <td><%= @post.body %></td>
-          </tr>
-          <tr>
-            <td>コメント数: <%= @post.post_comments.count %></td>
-            <td>
-              <%= link_to '編集', edit_admin_post_path(@post.id), class: "btn btn-sm btn-success" %>
-              <%= link_to '削除', admin_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-            </td>
-          </tr>
-        </table>
-      </div>
+      <table class="table table-borderless d-flex justify-content-center">
+        <tr>
+          <td>ファッション名</td>
+          <td><%= link_to @post.title, admin_post_path(@post.id), class: 'text-dark' %></td>
+        </tr>
+        <tr>
+          <td>コーディネート内容</td>
+          <td><%= @post.body %></td>
+        </tr>
+        <tr>
+          <td>コメント数: <%= @post.post_comments.count %></td>
+          <td>
+            <%= link_to '編集', edit_admin_post_path(@post.id), class: "btn btn-sm btn-success px-3" %>
+            <%= link_to '削除', admin_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-2 px-3" %>
+          </td>
+        </tr>
+      </table>
+  </div>
 
-      <div class='col-4'>
-        <%= render "admin/post_comments/index", post: @post %>
-      </div>
-    </div>
-    <div class='row justify-content-end mb-4'>
-      <%= link_to '投稿一覧へ戻る', admin_posts_path, class: "btn btn-secondary ml-5" %>
-    </div>
+  <div class='row-8'>
+    <h5 class=" text-center mt-4">コメント</h5>
+      <%= render "admin/post_comments/index", post: @post %>
+  </div>
+
+  <div class='row d-flex justify-content-center my-4'>
+    <%= link_to '投稿一覧へ戻る', admin_posts_path, class: "btn btn-secondary" %>
+  </div>
 </div>
