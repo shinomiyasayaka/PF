@@ -22,31 +22,37 @@
           <li>
             <%= link_to mypage_path(current_customer.id),class: 'nav-link text-dark ml-5' do %>
               <i class="fa-solid fa-house"></i>
+              <!--マイページ-->
             <% end %>
           </li>
           <li>
             <%= link_to posts_path,class: 'nav-link text-dark ml-5' do %>
               <i class="fa-regular fa-file-image"></i>
+              <!--投稿一覧-->
             <% end %>
           </li>
           <li>
             <%= link_to list_path,class: 'nav-link text-dark ml-5' do %>
               <i class="fa-regular fa-user"></i>
+              <!--会員一覧-->
             <% end %>
           </li>
           <li>
             <%= link_to customer_favorites_path(current_customer),class: 'nav-link text-dark ml-5' do %>
               <i class="fa-regular fa-heart"></i>
+              <!--お気に入り一覧-->
             <% end %>
           </li>
           <li>
             <%= link_to new_post_path,class: 'nav-link text-dark ml-5' do %>
               <i class="fa-solid fa-file-pen"></i>
+              <!--新規投稿-->
             <% end %>
           </li>
           <li>
             <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-dark ml-5' do %>
               <i class="fa-solid fa-right-from-bracket"></i>
+              <!--ログアウト-->
             <% end %>
           </li>
         <% else %>

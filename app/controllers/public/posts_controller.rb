@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
+  before_action :ensure_guest_customer, only: [:create]
 
   def new
     @post = Post.new
@@ -54,6 +55,13 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     unless @post.customer == current_customer
       redirect_to posts_path
+    end
+  end
+
+  def ensure_guest_customer
+    @customer = current_customer
+    if @customer.guest_customer?
+      redirect_to new_post_path, notice: "ゲストユーザーは新規投稿できません。"
     end
   end
 
