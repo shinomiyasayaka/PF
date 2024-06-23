@@ -1,12 +1,12 @@
 <div class='container'>
-  <h3>投稿詳細</h3>
-  <div class='row'>
-    <div class='col-8'>
-      <table class="table table-borderless">
+  <h3 class=" text-center mt-4">投稿詳細</h3>
+  <div class='row-8'>
+    <div class='col'>
+      <table class="table table-borderless d-flex justify-content-center">
         <tr>
           <td>
-            <%= link_to mypage_path(@post.customer_id) do %>
-                <%= image_tag @post.customer.get_profile_image, size:"50x50" %><br>
+            <%= link_to mypage_path(@post.customer_id), class: 'text-dark' do %>
+                <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"50x50" %><br>
                 <%= @post.customer.name %>
             <% end %>
           </td>
@@ -14,16 +14,16 @@
         </tr>
       </table>
 
-      <table class="table table-borderless">
+      <table class="table table-borderless d-flex justify-content-center">
         <tr>
           <td>ファッション名</td>
-          <td><%= link_to @post.title, post_path(@post.id) %></td>
+          <td><%= link_to @post.title, post_path(@post.id), class: 'text-dark' %></td>
         </tr>
         <tr>
           <td>コーディネート内容</td>
           <td><%= @post.body %></td>
         </tr>
-        <tr>
+        <tr class="text-center">
           <td class="favorite-btn_<%= @post.id %>">
             <%= render "public/favorites/favorite_btn", post: @post %>
           </td>
@@ -38,8 +38,11 @@
         </tr>
       </table>
     </div>
+  </div>
 
-    <div class='col-4'>
+  <div class='row-8'>
+    <div class='col'>
+      <h5 class="text-center">コメント</h5>
       <div class="post-comments-index">
         <%= render "public/post_comments/index", post_comments: @post_comments %>
       </div>
@@ -48,7 +51,9 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-end mb-4">
+
+  </div>
+  <div class="row d-flex justify-content-center mb-4">
     <% if @post.customer == current_customer %>
       <%= link_to 'マイページへ', mypage_path(current_customer.id), class: "btn btn-secondary" %>
     <% else %>

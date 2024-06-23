@@ -1,7 +1,72 @@
-<footer style="padding-top: 70px; background-color: #f7d358;">
-  <div class='container mt-5'>
-  	<div class='row'>
-    	<div class='mx-auto'></div>
+<footer class="<%= (admin_signed_in? ? "admin_footer" : "" ) %>">
+  <nav class="navbar navbar-expand-lg", style="background-color: #bc8f8f; color: black;">
+    <div class="mx-auto">
+      <ul class="navbar-nav">
+        <% if admin_signed_in? %>
+          <li>
+            <%= link_to admin_posts_path,class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-file-image"></i>投稿一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_customers_path,class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-user"></i>会員一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-right-from-bracket"></i>ログアウト
+            <% end %>
+          </li>
+        <% elsif customer_signed_in? %>
+          <li>
+            <%= link_to mypage_path(current_customer.id),class: 'nav-link text-dark ml-5' do %>
+              <i class="fa-solid fa-house"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to posts_path,class: 'nav-link text-dark ml-5' do %>
+              <i class="fa-regular fa-file-image"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to list_path,class: 'nav-link text-dark ml-5' do %>
+              <i class="fa-regular fa-user"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to customer_favorites_path(current_customer),class: 'nav-link text-dark ml-5' do %>
+              <i class="fa-regular fa-heart"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_post_path,class: 'nav-link text-dark ml-5' do %>
+              <i class="fa-solid fa-file-pen"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-dark ml-5' do %>
+              <i class="fa-solid fa-right-from-bracket"></i>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to new_admin_session_path,class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-user-tie"></i>管理者ログイン
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-hands"></i>新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_customer_session_path,class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-right-to-bracket"></i>ログイン
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
-  </div>
+  </nav>
 </footer>

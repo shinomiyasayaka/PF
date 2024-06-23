@@ -10,7 +10,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def index
-    @customers = Customer.page(params[:page])
+    @customers = Customer.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
