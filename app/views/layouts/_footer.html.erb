@@ -4,17 +4,17 @@
       <ul class="navbar-nav">
         <% if admin_signed_in? %>
           <li>
-            <%= link_to admin_posts_path,class: 'nav-link text-dark' do %>
+            <%= link_to admin_posts_path,class: 'nav-link text-dark ml-3' do %>
               <i class="fa-solid fa-file-image"></i>投稿一覧
             <% end %>
           </li>
           <li>
-            <%= link_to admin_customers_path,class: 'nav-link text-dark' do %>
+            <%= link_to admin_customers_path,class: 'nav-link text-dark ml-3' do %>
               <i class="fa-solid fa-user"></i>会員一覧
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark ml-3' do %>
               <i class="fa-solid fa-right-from-bracket"></i>ログアウト
             <% end %>
           </li>
@@ -57,17 +57,17 @@
           </li>
         <% else %>
           <li>
-            <%= link_to new_admin_session_path,class: 'nav-link text-dark' do %>
+            <%= link_to new_admin_session_path,class: 'nav-link text-dark ml-3' do %>
               <i class="fa-solid fa-user-tie"></i>管理者ログイン
             <% end %>
           </li>
           <li>
-            <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
+            <%= link_to new_customer_registration_path,class: 'nav-link text-dark ml-3' do %>
               <i class="fa-solid fa-hands"></i>新規登録
             <% end %>
           </li>
           <li>
-            <%= link_to new_customer_session_path,class: 'nav-link text-dark' do %>
+            <%= link_to new_customer_session_path,class: 'nav-link text-dark ml-3' do %>
               <i class="fa-solid fa-right-to-bracket"></i>ログイン
             <% end %>
           </li>

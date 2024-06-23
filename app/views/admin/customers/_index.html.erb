@@ -1,6 +1,6 @@
 <table class="table">
-    <thead class="table-secondary">
-      <tr>
+    <thead class="table-dark">
+      <tr class="text-center">
         <th>会員ID</th>
         <th>アイコン</th>
         <th>氏名</th>
@@ -10,10 +10,10 @@
     </thead>
   <% customers.each do |customer| %>
     <tbody>
-      <tr>
+      <tr class="text-center">
         <td><%= customer.id %></td>
-        <td><%= image_tag customer.get_profile_image, size: '50x50' %></td>
-        <td><%= link_to customer.name, admin_customer_path(customer) %></td>
+        <td><%= image_tag customer.get_profile_image, class: "rounded-circle", size: '50x50' %></td>
+        <td><%= link_to customer.name, admin_customer_path(customer), class: 'text-dark' %></td>
         <td><%= customer.email %></td>
         <td><%= customer.customer_status %></td>
       </tr>
