@@ -1,15 +1,15 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-10">
-      <h2 class="my-5">フォロー</h2>
+<div class="container px-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-8">
+      <h3 class="my-5">フォロー</h3>
+      <div class="row justify-content-end mb-1">
+        <%= link_to 'マイページへ', mypage_path(current_customer.id), class: "btn btn-secondary btn-sm ml-5" %>
+      </div>
       <% if @customers.exists? %>
         <%= render "public/customers/index", customers: @customers %>
       <% else %>
         <p>ユーザーはいません</p>
       <% end %>
-      <div class="row justify-content-end mb-4">
-        <%= link_to 'マイページへ', mypage_path(current_customer.id), class: "btn btn-secondary ml-5" %>
-      </div>
     </div>
   </div>
 </div>

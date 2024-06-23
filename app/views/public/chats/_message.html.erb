@@ -1,9 +1,9 @@
 <% chats.each do |chat| %>
   <% if chat.customer_id == current_customer.id %>
-    <p style="text-align: right;"><%= image_tag current_customer.get_profile_image, size:'50x50' %> <%= current_customer.name %></p>
+    <p style="text-align: right;"><%= image_tag current_customer.get_profile_image, class: "rounded-circle", size:'50x50' %> <%= current_customer.name %></p>
     <p style="text-align: right;"><%= chat.message %></p>
   <% else %>
-    <p style="text-align: left;"><%= image_tag chat.customer.get_profile_image, size:'50x50' %> <%= chat.customer.name %></p>
+    <p style="text-align: left;"><%= image_tag chat.customer.get_profile_image, class: "rounded-circle", size:'50x50' %> <%= chat.customer.name %></p>
     <p style="text-align: left;"><%= chat.message %></p>
   <% end %>
 <% end %>

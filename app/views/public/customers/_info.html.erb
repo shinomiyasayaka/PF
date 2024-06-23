@@ -1,25 +1,32 @@
-<table class='table'>
-  <tr><%= image_tag customer.get_profile_image, size:'100x100' %></tr>
-  <tr>
-	  <th><i class="fa-regular fa-user"></i>name</th>
-	  <th><%= customer.name %></th>
-  </tr>
-  <tr>
-    <th>フォロー数</th>
-    <th class="followings">
-      <%= render "public/relationships/followings_count", customer: customer %>
-    </th>
-  </tr>
-  <tr>
-    <th>フォロワー数</th>
-    <th class="followers">
-      <%= render "public/relationships/followers_count", customer: customer %>
-    </th>
-  </tr>
-</table>
+<div class='row d-flex justify-content-center'>
+  <div class='col-3'>
+     <%= image_tag customer.get_profile_image, class: "rounded-circle", size:'150x150' %>
+  </div>
+  <div class='col-6'>
+    <table class='table'>
+      <tr>
+    	  <th><i class="fa-regular fa-user"></i>name</th>
+    	  <th><%= customer.name %></th>
+      </tr>
+      <tr>
+        <th>フォロー数</th>
+        <th class="followings">
+          <%= render "public/relationships/followings_count", customer: customer %>
+        </th>
+      </tr>
+      <tr>
+        <th>フォロワー数</th>
+        <th class="followers">
+          <%= render "public/relationships/followers_count", customer: customer %>
+        </th>
+      </tr>
+    </table>
+  </div>
+</div>
+
 
 <div class='row'>
-  <table class="table table-borderless">
+  <table class="table table-borderless d-flex justify-content-center">
     <tr>
       <td>
         <% if current_customer != customer %>
@@ -27,8 +34,8 @@
             <%= render "public/relationships/btn", customer: customer %>
           </div>
         <% else %>
-          <%= link_to edit_information_path(customer), class: "btn btn-outline-info btn-block" do %>
-            <i class="fa-solid fa-user-pen"></i>
+          <%= link_to edit_information_path(customer), class: "btn btn-outline-info px-5" do %>
+            <i class="fa-solid fa-user-pen"></i>会員編集
           <% end %>
         <% end %>
       </td>

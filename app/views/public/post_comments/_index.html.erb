@@ -1,12 +1,11 @@
-<h5>コメント</h5>
-<table>
+<table class="d-flex justify-content-center">
   <tbody>
       <% post_comments.each do |post_comment| %>
       <tr>
 
         <td>
-          <%= link_to mypage_path(post_comment.customer) do %>
-            <%= image_tag post_comment.customer.get_profile_image, size: "30x30" %><br>
+          <%= link_to mypage_path(post_comment.customer), class: 'text-dark' do %>
+            <%= image_tag post_comment.customer.get_profile_image, class: "rounded-circle", size: "30x30" %><br>
             <%= post_comment.customer.name %>
           <% end %>
         </td>

@@ -1,28 +1,34 @@
 <div class='container'>
-  <div class = "row">
-    <div class = 'col-10 py-5'>
-      <h2>会員編集</h2>
+  <div class = "row d-flex justify-content-center">
+    <div class = 'py-5'>
+      <h3 class = "text-center mb-4">会員編集</h3>
       <%= form_with model: @customer, url: update_information_path(@customer.id), method: :patch do |f| %>
         <%= render 'public/shared/error_messages', resource: @customer %>
-          <table class="table table-borderless">
+          <table class="table table-borderless d-flex justify-content-center">
             <tr>
               <td><%= f.label :profile_image, "アイコン" %></td>
+            </tr>
+            <tr>
               <td><%= f.file_field :profile_image, class: "form-control-file customer_image", accept: 'image/*' %></td>
             </tr>
 
             <tr>
               <td><%= f.label :name, "ユーザーネーム" %></td>
+            </tr>
+            <tr>
               <td><%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "山田花子" %></td>
             </tr>
 
             <tr>
               <td><%= f.label :email, "メールアドレス" %></td>
+            </tr>
+            <tr>
               <td><%= f.email_field :email, :size=>"40", autocomplete: "email", placeholder: "sample@example.com" %></td>
             </tr>
           </table>
-           <%= f.submit "編集内容を保存", class: "btn btn-success px-5" %>
-           <%= link_to '会員詳細へ戻る', mypage_path(current_customer.id), class: "btn btn-secondary ml-5" %>
-           <%= link_to "退会する", confirm_unsubscribe_path, class: "btn btn-danger ml-5" %>
+           <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+           <%= link_to '会員詳細へ戻る', mypage_path(current_customer.id), class: "btn btn-secondary ml-2" %>
+           <%= link_to "退会する", confirm_unsubscribe_path, class: "btn btn-danger ml-2" %>
       <% end %>
     </div>
   </div>
