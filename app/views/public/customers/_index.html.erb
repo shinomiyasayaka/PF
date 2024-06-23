@@ -8,6 +8,7 @@
     </thead>
     <tbody>
       <% customers.each do |customer| %>
+       <% next if customer.guest_customer? %>
         <tr class="text-center">
           <td><%= image_tag customer.get_profile_image, class: "rounded-circle", size: '50x50' %></td>
           <td><%= customer.name %></td>

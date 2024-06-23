@@ -1,4 +1,6 @@
 class Public::PostCommentsController < ApplicationController
+   before_action :ensure_guest_customer, only: [:create]
+
   def create
     @post = Post.find(params[:post_id])
     @comment = current_customer.post_comments.new(post_comment_params)
@@ -18,4 +20,12 @@ class Public::PostCommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
+
+  def ensure_guest_customer
+    @customer = current_customer
+    if @customer.guest_customer?
+      redirect_to posts_path, notice: "ゲストユーザーはコメントできません。"
+    end
+  end
+
 end
