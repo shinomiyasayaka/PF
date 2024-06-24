@@ -1,14 +1,14 @@
 <table class="table">
-    <thead class="thead-dark">
-      <tr class="text-center">
-        <th>icon</th>
-        <th><i class="fa-regular fa-user"></i>name</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% customers.each do |customer| %>
-       <% next if customer.guest_customer? %>
+  <thead class="thead-dark">
+    <tr class="text-center">
+      <th>icon</th>
+      <th><i class="fa-regular fa-user"></i>name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% customers.each do |customer| %>
+      <% next if customer.guest_customer? %>
         <tr class="text-center">
           <td><%= image_tag customer.get_profile_image, class: "rounded-circle", size: '50x50' %></td>
           <td><%= customer.name %></td>
@@ -17,8 +17,8 @@
           </td>
           <td><%= link_to '詳細', mypage_path(customer), class: "btn btn-secondary" %></td>
         </tr>
-      <% end %>
-    </tbody>
+    <% end %>
+  </tbody>
 </table>
 <div class="d-flex justify-content-center">
   <%= paginate customers %>

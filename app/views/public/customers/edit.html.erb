@@ -1,7 +1,7 @@
 <div class='container'>
-  <div class = "row d-flex justify-content-center">
-    <div class = 'py-5'>
-      <h3 class = "text-center mb-4">会員編集</h3>
+  <div class="row d-flex justify-content-center">
+    <div class='py-5'>
+      <h3 class="text-center mb-4">会員編集</h3>
       <%= form_with model: @customer, url: update_information_path(@customer.id), method: :patch do |f| %>
         <%= render 'public/shared/error_messages', resource: @customer %>
           <table class="table table-borderless d-flex justify-content-center">
@@ -26,9 +26,11 @@
               <td><%= f.email_field :email, :size=>"40", autocomplete: "email", placeholder: "sample@example.com" %></td>
             </tr>
           </table>
-           <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-           <%= link_to '会員詳細へ戻る', mypage_path(current_customer.id), class: "btn btn-secondary ml-2" %>
-           <%= link_to "退会する", confirm_unsubscribe_path, class: "btn btn-danger ml-2" %>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+            <%= link_to '会員詳細へ戻る', mypage_path(current_customer.id), class: "btn btn-secondary ml-2" %>
+            <%= link_to "退会する", confirm_unsubscribe_path, class: "btn btn-danger ml-2" %>
+          </div>
       <% end %>
     </div>
   </div>
