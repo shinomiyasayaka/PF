@@ -3,7 +3,7 @@
     <h3 class=" text-center mt-4">投稿詳細</h3>
       <table class="table table-borderless d-flex justify-content-center">
         <tr>
-          <td>
+          <td class="text-center">
             <%= link_to admin_customer_path(@post.customer_id), class: 'text-dark' do %>
                 <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"50x50" %><br>
                 <%= @post.customer.name %>

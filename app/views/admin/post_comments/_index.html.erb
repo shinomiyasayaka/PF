@@ -1,6 +1,6 @@
 <table class="d-flex justify-content-center">
   <tbody>
-      <% post.post_comments.each do |post_comment| %>
+    <% post.post_comments.each do |post_comment| %>
       <tr>
         <td class="text-center">
           <%= link_to admin_customer_path(post_comment.customer), class: 'text-dark' do %>
@@ -15,6 +15,6 @@
             <% end %>
         </td>
       </tr>
-      <% end %>
+    <% end %>
   </tbody>
 </table>

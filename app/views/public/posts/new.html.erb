@@ -26,7 +26,9 @@
               <td><%= f.text_area :body, rows:'5',placeholder: "コーディネート内容をここに", class: "w-100" %></td>
             </tr>
           </table>
-          <%= f.submit "投  稿", class: "btn btn-success px-5" %>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "新規投稿", class: "btn btn-success px-5" %>
+          </div>
       <% end %>
     </div>
   </div>

@@ -1,9 +1,8 @@
 <table class="d-flex justify-content-center">
   <tbody>
-      <% post_comments.each do |post_comment| %>
+    <% post_comments.each do |post_comment| %>
       <tr>
-
-        <td>
+        <td class="text-center">
           <%= link_to mypage_path(post_comment.customer), class: 'text-dark' do %>
             <%= image_tag post_comment.customer.get_profile_image, class: "rounded-circle", size: "30x30" %><br>
             <%= post_comment.customer.name %>
@@ -18,6 +17,6 @@
           <% end %>
         </td>
       </tr>
-      <% end %>
+    <% end %>
   </tbody>
 </table>

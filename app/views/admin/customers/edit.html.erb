@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="py-5">
-      <h4 class = "text-center mb-4"><%= @customer.name %>さんの会員情報編集</h4>
+      <h4 class="text-center mb-4"><%= @customer.name %>さんの会員情報編集</h4>
       <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
         <%= render "admin/shared/error_messages", resource: @customer %>
           <table class="table table-borderless d-flex justify-content-center">
