@@ -1,11 +1,9 @@
-<h5>コメント</h5>
-<table>
+<table class="d-flex justify-content-center">
   <tbody>
-      <% post.post_comments.each do |post_comment| %>
+    <% post.post_comments.each do |post_comment| %>
       <tr>
-
-        <td>
-          <%= link_to admin_customer_path(post_comment.customer) do %>
+        <td class="text-center">
+          <%= link_to admin_customer_path(post_comment.customer), class: 'text-dark' do %>
             <%= image_tag post_comment.customer.get_profile_image, size: "30x30" %><br>
             <%= post_comment.customer.name %>
           <% end %>
@@ -17,6 +15,6 @@
             <% end %>
         </td>
       </tr>
-      <% end %>
+    <% end %>
   </tbody>
 </table>

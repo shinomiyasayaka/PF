@@ -1,23 +1,26 @@
 <div class='container'>
-  <div class = "row justify-content-center">
-    <div class = 'col-10 py-5 center-block'>
-      <h4 class = "mb-4">管理者ログイン</h4>
+  <div class="row justify-content-center">
+    <div class='py-5'>
+      <h4 class="text-center">管理者ログイン</h4>
 
       <%= form_with model: @admin, url: admin_session_path do |f| %>
-        <table class="table table-borderless table align-middle offset-1 col-8">
+        <table class="table table-borderless d-flex justify-content-center">
           <tr>
             <td><%= f.label :email, "メールアドレス" %></td>
+          </tr>
+          <tr>
             <td><%= f.email_field :email, :size=>"40", autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></td>
           </tr>
 
           <tr>
             <td><%= f.label :password, "パスワード" %></td>
+          </tr>
+          <tr>
             <td><%= f.password_field :password, :size=>"40", autocomplete: "current-password" %></td>
           </tr>
 
           <tr>
-            <td></td>
-            <td><%= f.submit "ログイン", class: "btn btn-primary" %></td>
+            <td><%= f.submit "ログイン", class: "btn btn-info" %></td>
           </tr>
         </table>
       <% end %>

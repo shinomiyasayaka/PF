@@ -1,12 +1,11 @@
 <div class='container'>
-  <h3>投稿詳細</h3>
-  <div class='row'>
-    <div class='col-8'>
-      <table class="table table-borderless">
+  <div class='row-8'>
+    <h3 class=" text-center mt-4">投稿詳細</h3>
+      <table class="table table-borderless d-flex justify-content-center">
         <tr>
-          <td>
-            <%= link_to mypage_path(@post.customer_id) do %>
-                <%= image_tag @post.customer.get_profile_image, size:"50x50" %><br>
+          <td class="text-center">
+            <%= link_to mypage_path(@post.customer_id), class: 'text-dark' do %>
+                <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"50x50" %><br>
                 <%= @post.customer.name %>
             <% end %>
           </td>
@@ -14,16 +13,19 @@
         </tr>
       </table>
 
-      <table class="table table-borderless">
+      <table class="table table-borderless d-flex justify-content-center">
         <tr>
           <td>ファッション名</td>
-          <td><%= link_to @post.title, post_path(@post.id) %></td>
+          <td><%= link_to @post.title, post_path(@post.id), class: 'text-dark' %></td>
         </tr>
         <tr>
           <td>コーディネート内容</td>
           <td><%= @post.body %></td>
         </tr>
-        <tr>
+      </table>
+
+      <table class="table table-borderless d-flex justify-content-center">
+        <tr class="text-center">
           <td class="favorite-btn_<%= @post.id %>">
             <%= render "public/favorites/favorite_btn", post: @post %>
           </td>
@@ -31,21 +33,32 @@
             <%= render "public/post_comments/counter", post: @post %>
           </td>
           <td class="view-count">閲覧数: <%= @post.view_counts.count %></td>
-          <% if @post.customer == current_customer %>
-            <td><%= link_to '編集', edit_post_path(@post.id), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
-          <% end %>
         </tr>
       </table>
-    </div>
 
-    <div class='col-4'>
+      <div class="d-flex justify-content-center my-4">
+       <% if @post.customer == current_customer %>
+          <%= link_to '編集', edit_post_path(@post.id), class: "btn btn-sm btn-success px-3" %>
+          <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-2 px-3"%>
+        <% end %>
+      </div>
+  </div>
+
+  <div class='row-8'>
+    <h5 class=" text-center mt-4">コメント</h5>
       <div class="post-comments-index">
         <%= render "public/post_comments/index", post_comments: @post_comments %>
       </div>
       <div class="post-comments-form">
         <%= render "public/post_comments/form", post: @post %>
       </div>
-    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center my-4">
+    <% if @post.customer == current_customer %>
+      <%= link_to 'マイページへ', mypage_path(current_customer.id), class: "btn btn-secondary" %>
+    <% else %>
+      <%= link_to '投稿一覧へ', posts_path, class: "btn btn-secondary" %>
+    <% end %>
   </div>
 </div>

@@ -1,32 +1,42 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h4 class="my-5"><%= @customer.name %>さんの会員情報編集</h4>
+  <div class="row d-flex justify-content-center">
+    <div class="py-5">
+      <h4 class="text-center mb-4"><%= @customer.name %>さんの会員情報編集</h4>
       <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
         <%= render "admin/shared/error_messages", resource: @customer %>
-          <table class="table table-borderless">
+          <table class="table table-borderless d-flex justify-content-center">
             <tr>
               <td>会員ID</td>
+            </tr>
+            <tr>
               <td><%= @customer.id %></td>
             </tr>
 
             <tr>
               <td><%= f.label :profile_image, "アイコン" %></td>
+            </tr>
+            <tr>
               <td><%= f.file_field :profile_image, class: "form-control-file customer_image", accept: 'image/*' %></td>
             </tr>
 
             <tr>
               <td><%= f.label :name, "氏名" %></td>
+            </tr>
+            <tr>
               <td><%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "山田花子" %></td>
             </tr>
 
             <tr>
               <td><%= f.label :email, "メールアドレス" %></td>
+            </tr>
+            <tr>
               <td><%= f.text_field :email, :size=>"40", autocomplete: "email", placeholder: "sample@example.com" %></td>
             </tr>
 
             <tr>
               <td>会員ステータス</td>
+            </tr>
+            <tr>
               <td>
                 <%= f.radio_button :is_active, :true %>
                 <%= f.label :is_active, "有効", { value: :true }  %>
@@ -35,15 +45,11 @@
                 <%= f.label :is_active, "退会", { value: :false } %>
               </td>
             </tr>
-
-            <tr>
-              <td></td>
-              <td>
-                <%= f.submit "変更を保存", class:"btn btn-success" %>
-                <%= link_to '会員詳細へ戻る', admin_customer_path(@customer), class: "btn btn-secondary ml-5" %>
-              </td>
-            </tr>
           </table>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "編集変更を保存", class:"btn btn-success" %>
+            <%= link_to '会員詳細へ戻る', admin_customer_path(@customer), class: "btn btn-secondary ml-2" %>
+          </div>
       <% end %>
     </div>
   </div>

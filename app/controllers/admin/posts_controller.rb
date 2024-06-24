@@ -8,7 +8,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
   end
 
   def edit
@@ -25,6 +25,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
     redirect_to admin_posts_path
   end

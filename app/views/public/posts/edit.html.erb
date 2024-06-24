@@ -1,27 +1,35 @@
 <div class='container'>
-  <div class = "row">
-    <div class = 'col-10 py-5'>
-      <h2>投稿編集</h2>
+  <div class="row d-flex justify-content-center">
+    <div class='py-5'>
+      <h3 class="text-center mb-4">投稿編集</h3>
       <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
         <%= render 'public/shared/error_messages', resource: @post %>
-          <table class="table table-borderless">
+          <table class="table table-borderless d-flex justify-content-center">
             <tr>
-              <td><%= f.label :image, "画像" %></td>
+              <td><%= f.label :image, "写真" %></td>
+            </tr>
+            <tr>
               <td><%= f.file_field :image, accept: "image/*" %></td>
             </tr>
 
             <tr>
               <td><%= f.label :title, "ファッション名" %></td>
-              <td><%= f.text_field :title, rows:'5',placeholder: "ファッション名をここに", class: "w-50" %></td>
+            </tr>
+            <tr>
+              <td><%= f.text_field :title, rows:'5',placeholder: "ファッション名をここに", class: "w-75" %></td>
             </tr>
 
             <tr>
               <td><%= f.label :body, "コーディネート内容" %></td>
-              <td><%= f.text_area :body, rows:'5',placeholder: "コーディネート内容をここに", class: "w-75" %></td>
+            </tr>
+            <tr>
+              <td><%= f.text_area :body, rows:'5',placeholder: "コーディネート内容をここに", class: "w-100" %></td>
             </tr>
           </table>
-          <%= f.submit "編集内容を保存", class: "btn btn-success px-5" %>
-          <%= link_to '投稿詳細へ戻る', post_path(@post.id), class: "btn btn-secondary px-5" %>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+            <%= link_to '投稿詳細へ戻る', post_path(@post.id), class: "btn btn-secondary ml-2" %>
+          </div>
       <% end %>
   	</div>
   </div>

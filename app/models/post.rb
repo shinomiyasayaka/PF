@@ -6,6 +6,12 @@ class Post < ApplicationRecord
   has_many :view_counts, dependent: :destroy
   has_many :notifications, as: :notifiable, dependent: :destroy
 
+  after_create do
+    customer.followers.each do |follower|
+      notifications.create(customer_id: follower.id)
+    end
+  end
+
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
   end

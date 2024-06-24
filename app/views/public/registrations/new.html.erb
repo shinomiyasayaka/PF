@@ -1,24 +1,24 @@
 <div class='container'>
-  <div class = "row justify-content-center">
-    <div class = 'col-10 py-5'>
-      <h4 class ="bg-body-secondary">新規会員登録</h4>
-      
+  <div class = "row d-flex justify-content-center">
+    <div class = 'py-5'>
+      <h4 class ="text-center">新規会員登録</h4>
+
           <%= form_with model: @customer, url: customer_registration_path do |f| %>
             <%= render "public/shared/error_messages", resource: resource %>
-            　 <table class="table table-borderless table align-middle">
+            　 <table class="table table-borderless d-flex justify-content-center">
                   <tr>
                     <td><%= f.label :name, "ユーザーネーム" %></td>
-                    <td></td>
+                  <tr>
                     <td><%= f.text_field :name, :size=>"40", autofocus: true, autocomplete: "name", placeholder: "山田花子" %></td>
                   </tr>
-                  
+
                   <tr>
                     <td><%= f.label :email, "メールアドレス" %></td>
-                    <td></td>
-                    <td><%= f.email_field :email, :size=>"40", autocomplete: "email", placeholder: "sample@example.com" %></td>
-                    <td></td>
                   </tr>
-                  
+                  <tr>
+                    <td><%= f.email_field :email, :size=>"40", autocomplete: "email", placeholder: "sample@example.com" %></td>
+                  </tr>
+
                   <tr>
                     <td>
                       <%= f.label :password, "パスワード" %>
@@ -26,29 +26,28 @@
                         <em>(<%= @minimum_password_length %> 文字以上)</em>
                       <% end %>
                     </td>
-                    <td></td>
-                    <td><%= f.password_field :password, :size=>"40", autocomplete: "new-password" %></td>
-                    <td></td>
                   </tr>
-                  
+                  <tr>
+                    <td><%= f.password_field :password, :size=>"40", autocomplete: "new-password" %></td>
+                  </tr>
+
                   <tr>
                     <td><%= f.label :password_confirmation, "パスワード(確認用)" %></td>
-                    <td></td>
-                    <td><%= f.password_field :password_confirmation, :size=>"40", autocomplete: "new-password" %></td>
-                    <td></td>
                   </tr>
-                  
                   <tr>
-                    <td></td>
-                    <td></td>
+                    <td><%= f.password_field :password_confirmation, :size=>"40", autocomplete: "new-password" %></td>
+                  </tr>
+
+                  <tr>
                     <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
-                    <td></td>
                   </tr>
                 </table>
               <% end %>
-            <div class = "col-10 px-5">
-              <h6>既に登録済みの方</h6>
-              <%= render "public/shared/links" %> からログインしてください。
+            <div>
+              <h6 class="text-center">既に登録済みの方</h6>
+              <div class = "d-flex justify-content-center">
+                <%= render "public/shared/links" %>
+              </div>
             </div>
     </div>
   </div>

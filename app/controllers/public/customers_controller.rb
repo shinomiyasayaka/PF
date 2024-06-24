@@ -6,11 +6,11 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts
+    @posts = @customer.posts.page(params[:page])
   end
 
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -39,13 +39,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def followings
-    customer = Customer.find(params[:customer_id])
-    @customers = customer.followings
+    @customer = Customer.find(params[:customer_id])
+    @customers = @customer.followings.page(params[:page])
   end
 
   def followers
-    customer = Customer.find(params[:customer_id])
-    @customers = customer.followers
+    @customer = Customer.find(params[:customer_id])
+    @customers = @customer.followers.page(params[:page])
   end
 
   private
@@ -63,7 +63,7 @@ class Public::CustomersController < ApplicationController
   def ensure_guest_customer
     @customer = current_customer
     if @customer.guest_customer?
-      redirect_to mypage_path(current_customer) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to mypage_path(current_customer) , notice: "ゲストユーザーは会員編集できません。"
     end
   end
 

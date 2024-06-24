@@ -3,6 +3,10 @@
     <h4 id="room" data-room="<%= @room.id %>" data-customer="<%= current_customer.id %>"><%= @customer.name %> さんとのチャット</h4>
   </div>
 
+  <div class="row d-flex justify-content-center">
+    <%= link_to 'マイページへ', mypage_path(current_customer.id), class: "btn btn-secondary  btn-sm" %>
+  </div>
+
   <div class="row d-flex justify-content-center mt-4">
     <div class="message" style="width: 400px;">
       <%= (render 'public/chats/message', chats: @chats) %>
@@ -13,14 +17,15 @@
     <%= render "public/shared/error_messages", resource: @chat %>
   </div>
 
-  <div class="row mx-auto d-flex justify-content-center mb-4">
+  <div class="row d-flex justify-content-center ml-3">
     <%= form_with model: @chat, data: {remote: true} do |f| %>
       <%= f.text_field :message, :size=>"50", autocomplete: "message", placeholder: "メッセージをここに"%>
       <%= f.hidden_field :room_id %>
       <%= f.submit "送信", class: "btn btn-dark" %>
     <% end %>
   </div>
-  <div class="row justify-content-end mb-4">
-    <%= link_to 'マイページへ戻る', mypage_path(current_customer.id), class: "btn btn-secondary ml-5" %>
+
+  <div class="row d-flex justify-content-center my-4">
+    <%= link_to 'マイページへ', mypage_path(current_customer.id), class: "btn btn-secondary btn-sm" %>
   </div>
 </div>

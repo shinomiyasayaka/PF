@@ -1,12 +1,15 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-10">
-      <h2 class="my-5">フォロワー</h2>
-      <% if @customers.exists? %>
-        <%= render "public/customers/index", customers: @customers %>
-      <% else %>
-        <p>ユーザーはいません</p>
-      <% end %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-8">
+      <h3 class="text-center my-4">フォロワー</h3>
+        <% if @customers.exists? %>
+          <%= render "public/customers/index", customers: @customers %>
+        <% else %>
+          <p>ユーザーはいません</p>
+        <% end %>
     </div>
+  </div>
+  <div class="row d-flex justify-content-center my-4">
+    <%= link_to 'マイページへ', mypage_path(current_customer.id), class: "btn btn-secondary" %>
   </div>
 </div>

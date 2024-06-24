@@ -1,0 +1,30 @@
+<header style="background-color: #bc8f8f; color: black;">
+  <nav class="navbar navbar-expand-lg">
+    <div class="mx-auto">
+      <%= link_to (admin_signed_in? ? new_admin_session_path : root_path ), class: "logo" do %>
+        <%= image_tag 'sharefashion', class: "rounded-circle", size: "100x100" %>
+      <% end %>
+    </div>
+  </nav>
+  <div class="d-flex justify-content-center pb-2">
+    <% if customer_signed_in? %>
+      <div class="dropdown mr-3">
+        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa-regular fa-bell"></i>
+          <span class="badge badge-danger"><%= current_customer.notifications.where(read: false).count %></span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% if current_customer.notifications.where(read: false).any? %>
+            <small class="dropdown-item disabled">直近5件の未読の通知を表示しています</small>
+            <% current_customer.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
+              <%= link_to notification_message(notification), notification_path(notification), method: :patch, class: "dropdown-item" %>
+            <% end %>
+          <% else %>
+            <span class="dropdown-item disabled">未読の通知はありません</span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <%= render 'public/searches/form' %>
+  </div>
+</header>

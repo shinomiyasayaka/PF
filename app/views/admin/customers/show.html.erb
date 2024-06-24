@@ -1,13 +1,18 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h4 class="my-5"><%= @customer.name %>さんの会員詳細</h4>
+  <div class="row d-flex justify-content-center">
+    <div class='col-5'>
+      <h4 class="my-4 text-center"><%= @customer.name %>さんの会員詳細</h4>
         <%= render 'info', customer: @customer %>
     </div>
+  </div>
 
-    <div class="col">
-      <h3 class="my-5">投稿一覧</h3>
+  <div class="row d-flex justify-content-center my-4">
+    <div class='col-8'>
+      <h3 class="text-center">投稿一覧</h3>
         <%= render "admin/posts/index", posts: @posts %>
     </div>
+  </div>
+  <div class="row d-flex justify-content-center my-4">
+    <%= link_to '会員一覧へ戻る', admin_customers_path, class: "btn btn-secondary" %>
   </div>
 </div>
