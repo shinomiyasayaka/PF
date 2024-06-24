@@ -50,7 +50,7 @@ class Public::CustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:customer).permit(:name, :profile_image)
+    params.require(:customer).permit(:name, :email, :profile_image)
   end
 
   def ensure_correct_customer
