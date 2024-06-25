@@ -9,15 +9,16 @@
       </tr>
     </thead>
   <% customers.each do |customer| %>
-    <tbody>
-      <tr class="text-center">
-        <td><%= customer.id %></td>
-        <td><%= image_tag customer.get_profile_image, class: "rounded-circle", size: '50x50' %></td>
-        <td><%= link_to customer.name, admin_customer_path(customer), class: 'text-dark' %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.customer_status %></td>
-      </tr>
-    </tbody>
+    <% next if customer.guest_customer? %>
+      <tbody>
+        <tr class="text-center">
+          <td><%= customer.id %></td>
+          <td><%= image_tag customer.get_profile_image, class: "rounded-circle", size: '50x50' %></td>
+          <td><%= link_to customer.name, admin_customer_path(customer), class: 'text-dark' %></td>
+          <td><%= customer.email %></td>
+          <td><%= customer.customer_status %></td>
+        </tr>
+      </tbody>
   <% end %>
 </table>
 <div class="d-flex justify-content-center">

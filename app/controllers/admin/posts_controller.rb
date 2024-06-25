@@ -8,7 +8,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
